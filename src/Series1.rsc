@@ -168,7 +168,21 @@ ColoredTree inc1(ColoredTree t) {
 }
 
 // write a test for inc1, run from console using :test
-test bool testInc1() = false;
+test bool testInc1(){
+  ColoredTree testingTree = exampleTree();
+  ColoredTree incTestingTree = inc1(testingTree);
+  int numberOfLeaves = 0;
+  visit(testingTree){
+    case leaf(int n): numberOfLeaves += 1;
+  }
+  int defaultSum = sumLeavesWithVisit(testingTree);
+  int incSum = sumLeavesWithVisit(incTestingTree);
+  println("defaultSum = <defaultSum>, incSum = <incSum>, numberOfLeaves = <numberOfLeaves>");
+  if (defaultSum + numberOfLeaves == incSum){
+    return true;
+  }
+  return false;
+}
 
 // define a property for inc1, i.e. a boolean
 // function that checks if one tree is inc1 of the other
