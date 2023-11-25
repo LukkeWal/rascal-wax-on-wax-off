@@ -76,14 +76,19 @@ int factorial(int n) {
 void comprehensions() {
 
   // construct a list of squares of integer from 0 to 9 (use range [0..10])
+  println([ i*i | i <- [1..10]]);
   
   // same, but construct a set
+  println({ <i, i*i> | i <- [1..10]});
   
   // same, but construct a map
+  println(( i: i*i | i <- [1..10]));
 
   // construct a list of factorials from 0 to 9
+  println([ fact(i) | i <- [1..10]]);
   
   // same, but now only for even numbers  
+  println([ fact(i) | i <- [0,2..10]]);
 }
  
 
