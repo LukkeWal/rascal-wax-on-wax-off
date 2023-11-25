@@ -26,12 +26,24 @@ void helloWorld() {
  * - implement as list-returning function
  */
  
-void fizzBuzz() {
-
-}
-
-list[str] fizzBuzz() {
-  return []; // replace
+list[str] fizzBuzz(int max) {
+  int n = 1;
+  list[str] result = [];
+  while (n <= max){
+    result = result + "";
+    if (!(n%5 == 0|| n%3 == 0)){
+      result[n-1] = "<n>";
+    } else {
+      if (n%3 == 0){
+      result[n-1] += "Fizz";
+      }
+      if (n%5 == 0){
+        result[n-1] += "Buzz";
+      };
+    };
+    n += 1;
+  };
+  return result;
 }
 
 /*
@@ -46,11 +58,14 @@ list[str] fizzBuzz() {
 int fact(0) = 1;
 int fact(1) = 1;
 
-default int factorial(int n) {
-  return -1; // <- replace
+default int fact(int n) = n * fact(n-1);
+
+int factorial(int n) {
+  if (n<=0){
+    return 1;
+  }
+  return n * factorial(n-1);
 }
-
-
 
 
 /*
