@@ -101,22 +101,17 @@ void comprehensions() {
 void patternMatching() {
   str hello = "Hello World!";
   
-  
- 
   // print all splits of list
   list[int] aList = [1,2,3,4,5];
-  for ([/*TODO*/] := aList) {
-    ;
+  for ([*L1, *L2] := aList) {
+    println("<L1> and <L2>");
   }
   
   // print all partitions of a set
   set[int] aSet = {1,2,3,4,5};
-  for ({/*TODO*/} := aSet) {
-    ;
+  for ({*S1, *S2} := aSet) {
+    println("<S1> and <S2>");
   } 
-
-  
-
 }  
  
  
