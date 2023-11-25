@@ -190,13 +190,17 @@ test bool testInc1(){
 // Use switch on the tupling of t1 and t2 (`<t1, t2>`)
 // or pattern based dispatch.
 // Hint! The tree also needs to have the same shape!
-bool isInc1(ColoredTree t1, ColoredTree t2) {
-  return false; // <- replace
+bool isInc1(leaf(int a), leaf (int b)) = a-b == 1 || a-b == -1  ? true: false;
+bool isInc1(red(ColoredTree l,ColoredTree r), red(ColoredTree a, ColoredTree b)) = isInc1(l, a) && isInc1(r, b);
+bool isInc1(black(ColoredTree l, ColoredTree r), black(ColoredTree a, ColoredTree b)) = isInc1(l, a) && isInc1(r, b);
+
+default bool isInc1(ColoredTree t1, ColoredTree t2) {;
+  return false;
 }
  
 // write a randomized test for inc1 using the property
 // again, execute using :test
-test bool testInc1Randomized(ColoredTree t1) = false;
+test bool testInc1Randomized(ColoredTree t1) = isInc1(t1, inc1(t1));
 
 
  
