@@ -112,9 +112,7 @@ void patternMatching() {
   for ({*S1, *S2} := aSet) {
     println("<S1> and <S2>");
   } 
-}  
- 
- 
+}
  
 /*
  * Trees
@@ -123,13 +121,12 @@ void patternMatching() {
  * - use the exampleTree() to test in the console
  */
  
-data ColoredTree
-  = leaf(int n);
+data ColoredTree = leaf(int n);
+data ColoredTree = black(ColoredTree a, ColoredTree b);
+data ColoredTree = red(ColoredTree a, ColoredTree b);
   
 
-ColoredTree exampleTree()
-  =  red(black(leaf(1), red(leaf(2), leaf(3))),
-              black(leaf(4), leaf(5)));  
+ColoredTree exampleTree() = red(black(leaf(1), red(leaf(2), leaf(3))),black(leaf(4), leaf(5)));  
   
   
 // write a recursive function summing the leaves
