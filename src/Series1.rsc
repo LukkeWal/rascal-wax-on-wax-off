@@ -132,26 +132,39 @@ ColoredTree exampleTree() = red(black(leaf(1), red(leaf(2), leaf(3))),black(leaf
 // write a recursive function summing the leaves
 // (use switch or pattern-based dispatch)
 
-int sumLeaves(ColoredTree t) = 0; // TODO: Change this!
+int sumLeaves(leaf(int n)) = n;
+int sumLeaves(black(ColoredTree a, ColoredTree b)) = sumLeaves(a) + sumLeaves(b);
+int sumLeaves(red(ColoredTree a, ColoredTree b)) = sumLeaves(a) + sumLeaves(b);
 
 // same, but now with visit
 int sumLeavesWithVisit(ColoredTree t) {
-  return -1; // <- replace
+  int result = 0;
+  visit (t){
+    case leaf(int n): result += n;
+  }
+  return result;
 }
 
 // same, but now with a for loop and deep match
 int sumLeavesWithFor(ColoredTree t) {
-  return -1; // <- replace 
+  int result = 0;
+  for (/leaf(n) := t){
+    result += n;
+  }
+  return result;
 }
 
 // same, but now with a reducer and deep match
 // Reducer = ( <initial value> | <some expression with `it` | <generators> )
-int sumLeavesWithReducer(ColoredTree t) = 0; // TODO: Change this!
+int sumLeavesWithReducer(ColoredTree t) = (0 | it + n | /leaf(n) := t);
 
 
 // add 1 to all leaves; use visit + =>
 ColoredTree inc1(ColoredTree t) {
-  return leaf(-1); // <- replace 
+  t = visit (t){
+    case leaf(int n) => leaf(n+1)
+  }
+  return t;
 }
 
 // write a test for inc1, run from console using :test
